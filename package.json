@@ -7,7 +7,7 @@
     "node": ">=14"
   },
   "scripts": {
-    "start": "node server.js",
+    "start": "node server.cjs",
     "dev": "vite",
     "build": "vite build",
     "heroku-postbuild": "npm run build",
