@@ -1,11 +1,22 @@
 import express from 'express';
-import fetch from 'node-fetch';
 import path from 'path';
-const app = express();
-const PORT = process.env.PORT || 3000;
+import { fileURLToPath } from 'url';
+import fetch from 'node-fetch';
 
-// Serve static files from the React app
+const app = express();
+const port = process.env.PORT || 5001;
+
+// Convert the URL to a path that's usable in the file system
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Use the path module to join __dirname with your 'dist' directory
 app.use(express.static(path.join(__dirname, 'dist')));
+
+app.listen(port, () => {
+    console.log(`Server listening at http://localhost:${port}`);
+});
+
 
 // Proxy endpoint
 // Assuming your React app might call multiple teams, let's make it dynamic:
@@ -22,11 +33,3 @@ app.get('/api/news/:teamName', async (req, res) => {
     }
 });
 
-// Handles any requests that don't match the ones above
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'dist', 'index.html'));
-});
-
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-});
