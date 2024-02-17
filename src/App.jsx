@@ -26,11 +26,16 @@ function App() {
   const [news, setNews] = useState([]);
 
   async function RenderNews(teamName) {
-    const response = await fetch(`${import.meta.env.VITE_API_URL}/news/${teamName}`);
+    // Check if the app is in production
+    const baseUrl = process.env.NODE_ENV === 'production' 
+      ? `/api/news/${teamName}` // Use relative URL for production
+      : `${import.meta.env.VITE_API_URL}/news/${teamName}`; // Use full URL for development
+  
+    const response = await fetch(baseUrl);
     const articles = await response.json();
     setNews(articles);
   }
-
+  
   useEffect(() => {
     RenderNews('manchester-united');
   }, []);
