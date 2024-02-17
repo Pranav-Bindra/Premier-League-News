@@ -45,7 +45,7 @@ function App() {
       <div className='flex pt-4 mt-2 mx-2 justify-center rounded-md font-extrabold text-white text-2xl bg-gradient-to-r from-cyan-500 to-blue-500 h-16'>
         Premier League News
       </div>
-      <div className='grid grid-cols-5 gap-4 mt-8 mx-12'>
+      <div className='grid grid-cols-2 md:grid-cols-5 gap-4 mt-8 mx-12'>
         <TeamCard logo ={arsenal} team ='Arsenal'  bgBottomColor='border-b-red-600' onClick = {()=> RenderNews('arsenal')}></TeamCard>
         <TeamCard logo ={astonVilla} team ='Aston Villa'  bgBottomColor='border-b-pink-800' onClick = {()=> RenderNews('aston-villa')}></TeamCard>
         <TeamCard logo ={bournemouth} team ='Bournemouth'  bgBottomColor='border-b-red-800' onClick = {()=> RenderNews('afc-bournemouth')}></TeamCard>
