@@ -3,13 +3,19 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "engines": {
+    "node": ">=14"
+  },
   "scripts": {
+    "start": "serve -s dist -l $PORT",
     "dev": "vite",
     "build": "vite build",
+    "heroku-postbuild": "npm run build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
   "dependencies": {
+    "heroku": "^8.9.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
